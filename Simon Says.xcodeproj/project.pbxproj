@@ -20,7 +20,7 @@
 		9210A3F6263A2D7800AAC6B7 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9210A3F5263A2D7800AAC6B7 /* Move.swift */; };
 		9210A3F8263A303400AAC6B7 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9210A3F7263A303400AAC6B7 /* ViewModel.swift */; };
 		9210A3FA263A305E00AAC6B7 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9210A3F9263A305E00AAC6B7 /* View.swift */; };
-		9210A3FC263A327800AAC6B7 /* SaveToDisk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9210A3FB263A327800AAC6B7 /* SaveToDisk.swift */; };
+		9210A3FC263A327800AAC6B7 /* DiskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9210A3FB263A327800AAC6B7 /* DiskManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +39,7 @@
 		9210A3F5263A2D7800AAC6B7 /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
 		9210A3F7263A303400AAC6B7 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		9210A3F9263A305E00AAC6B7 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
-		9210A3FB263A327800AAC6B7 /* SaveToDisk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveToDisk.swift; sourceTree = "<group>"; };
+		9210A3FB263A327800AAC6B7 /* DiskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				9210A3ED263A2B2700AAC6B7 /* Constants.swift */,
-				9210A3FB263A327800AAC6B7 /* SaveToDisk.swift */,
+				9210A3FB263A327800AAC6B7 /* DiskManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -203,7 +203,7 @@
 				9210A3EE263A2B2700AAC6B7 /* Constants.swift in Sources */,
 				9210A3F2263A2D1200AAC6B7 /* Player.swift in Sources */,
 				9210A3F0263A2CFC00AAC6B7 /* GameManager.swift in Sources */,
-				9210A3FC263A327800AAC6B7 /* SaveToDisk.swift in Sources */,
+				9210A3FC263A327800AAC6B7 /* DiskManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +286,8 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = off;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -340,6 +342,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = off;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};

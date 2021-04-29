@@ -11,6 +11,7 @@ import Foundation
 protocol GameEventsDelegate: NSObject {
 	func gameOver()
 	func updateScores()
+	func newOpponentMove(_ move: Move)
 }
 
 struct GameManager {
@@ -28,8 +29,9 @@ struct GameManager {
 			if (self.verifyIfSequenceIsFinished()){
 				// User has completed the right sequence of moves. Display a status and keep the game going
 				self.localPlayer.increaseCurrentScore()
+				self.gameEventsDelegate?.updateScores()
 				self.generateNewOpponentMove()
-				self.displayOpponentSequence()
+
 			} else {
 				// User has pressed all the right buttons so far, but is not finished typing the sequence
 			}
@@ -43,15 +45,18 @@ struct GameManager {
 	mutating func restartGame() {
 		opponent = Player(type: .computer)
 		localPlayer = Player(type: .local)
-//		localPlayer.highScore = SaveToDisk().retrieveHighScoreFromDisk()
+		localPlayer.highScore = DiskManager().retrieveHighScoreFromDisk()
 		self.gameEventsDelegate?.updateScores()
+		self.generateNewOpponentMove()
 	}
 	
 	
 	// MARK: Private Functions - game mechanics
 
-	private func verifyIfMoveIsValid() -> Bool {
+	private mutating func verifyIfMoveIsValid() -> Bool {
 //		self.localPlayer.sequence.isSequenceEqual(local: <#T##Sequence#>, opponent: <#T##Sequence#>)
+		
+		
 		return true
 	}
 	
@@ -59,16 +64,26 @@ struct GameManager {
 		return true
 	}
 	
-	private func generateNewOpponentMove() {
+	private mutating func generateNewOpponentMove() {
+		let randomInt = Int.random(in: 1..<5)
+		var move: Move?
 		
-	}
-	private func displayOpponentSequence() {
-		
+		if (randomInt == 1){
+			move = .top
+		} else if (randomInt == 2){
+			move = .left
+		} else if (randomInt == 3){
+			move = .right
+		} else if (randomInt == 4){
+			move = .bottom
+		}
+		self.opponent.sequence.addMoveToSequence(move!)
+		self.gameEventsDelegate?.newOpponentMove(move!)
 	}
 	
 	private func saveScore(){
 		if (localPlayer.currentScore > localPlayer.highScore){
-			SaveToDisk().persistHighScoreToDisk(score: localPlayer.currentScore)
+			DiskManager().persistHighScoreToDisk(score: localPlayer.currentScore)
 		}
 	}
 	

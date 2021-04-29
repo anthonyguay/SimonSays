@@ -10,7 +10,7 @@
 import Foundation
 
 struct Sequence {
-	var sequence : [Move] = []
+	var moves : [Move] = []
 	
 	func isSequenceEqual(local: Sequence, opponent: Sequence) -> Bool {
 		
@@ -18,11 +18,11 @@ struct Sequence {
 	}
 	func isSequenceComplete(local: Sequence, opponent: Sequence) -> Bool {
 		// Called after we check the validity of the moves in the sequence. If both sequences are same length, we know moves are valid so local player is done
-		return (local.sequence.count == opponent.sequence.count)
+		return (local.moves.count == opponent.moves.count)
 	}
 	
 	mutating func addMoveToSequence(_ move: Move){
-		self.sequence.append(move)
+		self.moves.append(move)
 	}
 	
 }

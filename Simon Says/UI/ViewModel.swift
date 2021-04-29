@@ -29,14 +29,12 @@ class ViewModel: UIViewController {
 	
 	// MARK: UI Functions
 	func getHighScoreLabelText() -> String {
-		print("getHighScoreLabelText")
-		return "High Score: "
-//		return "High Score: " + String(self.gameManager.localPlayer.highScore)
+//		return "High Score: "
+		return "High Score: " + String(self.gameManager.localPlayer.highScore)
 	}
 	func getCurrentScoreLabelText() -> String {
-		print("getCurrentScoreLabelText")
-		return "Current Score: "
-		//		return "High Score: " + String(self.gameManager.localPlayer.currentScore)
+//		return "Current Score: "
+		return "Current Score: " + String(self.gameManager.localPlayer.currentScore)
 	}
 	
 	// MARK: Alert Windows
