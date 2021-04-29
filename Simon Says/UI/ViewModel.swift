@@ -15,13 +15,13 @@ class ViewModel: UIViewController {
 	func gameButtonPressed(_ button: UIButton) {
 		switch button.tag {
 		case K.UI.gameButtonTop:
-			self.gameManager.handleLocalMove(_move: .top)
+			self.gameManager.handleLocalMove(.top)
 		case K.UI.gameButtonLeft:
-			self.gameManager.handleLocalMove(_move: .left)
+			self.gameManager.handleLocalMove(.left)
 		case K.UI.gameButtonRight:
-			self.gameManager.handleLocalMove(_move: .right)
+			self.gameManager.handleLocalMove(.right)
 		case K.UI.gameButtonBottom:
-			self.gameManager.handleLocalMove(_move: .bottom)
+			self.gameManager.handleLocalMove(.bottom)
 		default:
 			print("")
 		}

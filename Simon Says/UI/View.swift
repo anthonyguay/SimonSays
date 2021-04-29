@@ -9,8 +9,6 @@ import UIKit
 
 class View: UIViewController, GameEventsDelegate {
 
-	
-
 	// UI outlets
 	@IBOutlet weak var highScoreLabel: UILabel!
 	@IBOutlet weak var currentScoreLabel: UILabel!
@@ -56,17 +54,16 @@ class View: UIViewController, GameEventsDelegate {
 	}
 	
 	func newOpponentMove(_ move: Move) {
-		
 		self.flashOpponentMoves()
 
 		if (move == .left){
-			print ("Left")
+//			print ("Left")
 		} else if (move == .right){
-			print ("Right")
+//			print ("Right")
 		} else if (move == .top){
-			print ("Top")
+//			print ("Top")
 		} else if (move == .bottom){
-			print ("Bottom")
+//			print ("Bottom")
 		}
 	}
 	

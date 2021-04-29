@@ -23,22 +23,29 @@ struct GameManager {
 	// MARK: Public Functions
 	
 	// MAIN FUNCTION called when the Player touches a button
-	mutating func handleLocalMove(_move: Move){
+	mutating func handleLocalMove(_ move: Move){
 
+		localPlayer.sequence.addMoveToSequence(move)
+		print("Adding move to sequence")
+		
 		if (verifyIfMoveIsValid()) {
+			// Last move is valid
 			if (self.verifyIfSequenceIsFinished()){
-				// User has completed the right sequence of moves. Display a status and keep the game going
+				// User has completed the entire sequence of moves. Display a status and keep the game going
+				print("Sequence completed")
 				self.localPlayer.increaseCurrentScore()
 				self.gameEventsDelegate?.updateScores()
 				self.generateNewOpponentMove()
-
+				self.localPlayer.sequence = Sequence()
 			} else {
+				print("In progress...")
 				// User has pressed all the right buttons so far, but is not finished typing the sequence
 			}
 		} else {
 			// Any wrong move terminates the game
+			print ("Not valid")
 			self.saveScore()
-			self.restartGame()
+			self.gameEventsDelegate?.gameOver()
 		}
 	}
 	
@@ -54,16 +61,14 @@ struct GameManager {
 	// MARK: Private Functions - game mechanics
 
 	private mutating func verifyIfMoveIsValid() -> Bool {
-//		self.localPlayer.sequence.isSequenceEqual(local: <#T##Sequence#>, opponent: <#T##Sequence#>)
-		
-		
-		return true
+		return self.localPlayer.sequence.isLatestMoveValid(local: localPlayer.sequence, opponent: opponent.sequence)
 	}
 	
 	private func verifyIfSequenceIsFinished() -> Bool {
-		return true
+		return self.localPlayer.sequence.isSequenceComplete(local: localPlayer.sequence, opponent: opponent.sequence)
 	}
 	
+	// Generates a random move, adds it to the oppponent's existing sequence, and tells the view to display the sequence
 	private mutating func generateNewOpponentMove() {
 		let randomInt = Int.random(in: 1..<5)
 		var move: Move?

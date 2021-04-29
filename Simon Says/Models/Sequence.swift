@@ -12,12 +12,25 @@ import Foundation
 struct Sequence {
 	var moves : [Move] = []
 	
-	func isSequenceEqual(local: Sequence, opponent: Sequence) -> Bool {
+	
+	// If the latest move matches the corresponding opponent move, we return true and keep the game going
+	func isLatestMoveValid(local: Sequence, opponent: Sequence) -> Bool {
+		let arraySize = local.moves.count
+		var counter = 0
 		
-		return false
+		print ("Local moves: ", local.moves)
+		print ("Opponent moves: ", opponent.moves)
+		while counter < arraySize {
+			if (local.moves[counter] != opponent.moves[counter]) {
+				return false
+			}
+			counter+=1
+		}
+		return true
 	}
+	
+	// Called after we check the validity of the moves in the sequence. If both sequences are same length, we know moves are valid so local player is done
 	func isSequenceComplete(local: Sequence, opponent: Sequence) -> Bool {
-		// Called after we check the validity of the moves in the sequence. If both sequences are same length, we know moves are valid so local player is done
 		return (local.moves.count == opponent.moves.count)
 	}
 	
