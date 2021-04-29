@@ -19,7 +19,7 @@ struct K {
 		static let notSelectedColor = UIColor.lightGray
 	}
 	
-	
+
 	
 }
 
