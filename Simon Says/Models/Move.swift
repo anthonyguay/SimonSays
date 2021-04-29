@@ -10,8 +10,8 @@
 import Foundation
 
 enum Move {
+	case top
 	case left
 	case right
-	case up
-	case down
+	case bottom
 }

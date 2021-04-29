@@ -96,6 +96,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4og-Jl-J61">
+                                <rect key="frame" x="144" y="135" width="126" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xkw-ed-H2a">
                                 <rect key="frame" x="157" y="797" width="100" height="50"/>
                                 <constraints>
@@ -114,12 +120,15 @@
                             <constraint firstItem="xkw-ed-H2a" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4Xx-Ux-Ty1"/>
                             <constraint firstItem="rDd-Nr-dUu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="7iF-wt-JUX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="xkw-ed-H2a" secondAttribute="bottom" constant="15" id="Am2-KG-GcZ"/>
+                            <constraint firstItem="4og-Jl-J61" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Xvg-I3-rt7"/>
                             <constraint firstItem="MRk-eI-me8" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="cfs-Kc-1F1"/>
+                            <constraint firstItem="4og-Jl-J61" firstAttribute="top" secondItem="rDd-Nr-dUu" secondAttribute="bottom" constant="20" id="opS-ir-MR9"/>
                             <constraint firstItem="MRk-eI-me8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="q5V-XA-F49"/>
                             <constraint firstItem="rDd-Nr-dUu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rwb-Sk-qUg"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="currentScoreLabel" destination="4og-Jl-J61" id="tkv-Xv-FaW"/>
                         <outlet property="gameButtonBottom" destination="Iy9-Jc-W35" id="2rv-D2-swS"/>
                         <outlet property="gameButtonLeft" destination="Ugh-I8-8vi" id="0oz-oA-mYr"/>
                         <outlet property="gameButtonRight" destination="2Ce-jz-wV0" id="yDc-Dw-w4t"/>

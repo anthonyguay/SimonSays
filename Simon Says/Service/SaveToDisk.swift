@@ -11,10 +11,12 @@ struct SaveToDisk {
 	let defaults = UserDefaults.standard
 	
 	func persistHighScoreToDisk(score: Int) {
+		print("Persist score")
 		defaults.set(score, forKey: "highscore")
 	}
 	
 	func retrieveHighScoreFromDisk() -> Int {
+		print("retrieve score")
 		return defaults.integer(forKey: "highscore")
 	}
 }

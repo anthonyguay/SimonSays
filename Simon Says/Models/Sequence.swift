@@ -20,4 +20,9 @@ struct Sequence {
 		// Called after we check the validity of the moves in the sequence. If both sequences are same length, we know moves are valid so local player is done
 		return (local.sequence.count == opponent.sequence.count)
 	}
+	
+	mutating func addMoveToSequence(_ move: Move){
+		self.sequence.append(move)
+	}
+	
 }

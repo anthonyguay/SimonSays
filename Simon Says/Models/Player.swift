@@ -13,23 +13,21 @@ enum PlayerType {
 }
 
 struct Player {
+	
 	var highScore: Int
+	var currentScore: Int
 	var sequence: Sequence
 	var type: PlayerType
 
 	init(type: PlayerType) {
 		self.sequence = Sequence()
 		self.type = type
+		self.currentScore = 0
 		self.highScore = 0
-		
-		if (type == .local) {
-			let highScore = SaveToDisk().retrieveHighScoreFromDisk()
-			print ("High score retrieved: ", highScore)
-		}
 	}
 
 	mutating func increaseCurrentScore(){
-		self.highScore+=1
+		self.currentScore+=1
 	}
 	
 }

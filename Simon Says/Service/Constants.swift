@@ -10,7 +10,7 @@ struct K {
 	
 	struct UI {
 		// Time waited before displaying alert windows
-		static let delayBeforeShowingAlertViews = 1.0
+		static let delayBeforeShowingAlertViews = 0.5
 		
 		// Game Buttons IDs
 		static let gameButtonTop = 0
