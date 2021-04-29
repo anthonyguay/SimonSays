@@ -12,12 +12,14 @@ struct K {
 		// Time waited before displaying alert windows
 		static let delayBeforeShowingAlertViews = 1.0
 		
-		// Cell Colors
-		static let validLocalMoveColor = UIColor.green
-		static let invalidLocalMoveColor = UIColor.red
-		static let validOpponentMoveColor = UIColor.blue
-		static let notSelectedColor = UIColor.lightGray
+		// Game Buttons IDs
+		static let gameButtonTop = 0
+		static let gameButtonLeft = 1
+		static let gameButtonRight = 2
+		static let gameButtonBottom = 3
 	}
+	
+	
 	
 
 	

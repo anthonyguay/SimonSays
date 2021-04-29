@@ -17,7 +17,7 @@ struct GameManager {
 
 	
 	// MAIN FUNCTION called when the Player touches a button
-	func handleMoveAndKeepGameGoing(){
+	mutating func handleMoveAndKeepGameGoing(){
 
 		if (verifyIfMoveIsValid()) {
 			if (self.verifyIfSequenceIsFinished()){

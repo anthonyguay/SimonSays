@@ -28,7 +28,7 @@ struct Player {
 		}
 	}
 
-	func increaseCurrentScore(){
+	mutating func increaseCurrentScore(){
 		self.highScore+=1
 	}
 	
