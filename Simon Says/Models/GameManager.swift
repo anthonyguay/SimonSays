@@ -50,6 +50,7 @@ struct GameManager {
 	}
 	
 	mutating func restartGame() {
+		self.saveScore()
 		opponent = Player(type: .computer)
 		localPlayer = Player(type: .local)
 		localPlayer.highScore = DiskManager().retrieveHighScoreFromDisk()
