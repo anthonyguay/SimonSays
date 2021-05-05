@@ -32,6 +32,7 @@ class View: UIViewController, GameEventsDelegate {
 		self.gameButtonLeft.layer.cornerRadius = 10
 		self.gameButtonRight.layer.cornerRadius = 10
 		self.gameButtonBottom.layer.cornerRadius = 10
+		self.styleButtonsBackToOriginal(Timer())
 		
 		// Set GameEventsDelegate to receive events from GameManager
 		self.viewModel.gameManager.gameEventsDelegate = self
@@ -59,47 +60,47 @@ class View: UIViewController, GameEventsDelegate {
 	}
 	
 	func newOpponentMove(_ move: Move) {
-		self.flashOpponentMoves()
-		
-		if (move == .left){
-			//			print ("Left")
-		} else if (move == .right){
-			//			print ("Right")
-		} else if (move == .top){
-			//			print ("Top")
-		} else if (move == .bottom){
-			//			print ("Bottom")
-		}
-	}
-	
-	private func flashOpponentMoves() {
-		
+		// Will loop through every Moves and start a timer to lighten up the button and turn it off after .5 second
 		for (index, move) in self.viewModel.gameManager.opponent.sequence.moves.enumerated() {
 			
-			DispatchQueue.main.asyncAfter(deadline: .now() + 1*Double(index+1)) { [self] in
-				print ("Move: ", move)
-				switch move {
-				case .top:
-					self.gameButtonTop.backgroundColor = UIColor(red: 124/255, green: 244/255, blue: 90/255, alpha: 1)
-				case .left:
-					self.gameButtonLeft.backgroundColor = UIColor(red: 242/255, green: 244/255, blue: 90/255, alpha: 1)
-				case .right:
-					self.gameButtonRight.backgroundColor = UIColor(red: 90/255, green: 144/255, blue: 244/255, alpha: 1)
-				case .bottom:
-					self.gameButtonBottom.backgroundColor = UIColor(red: 243/255, green: 108/255, blue: 70/255, alpha: 1)
-				}
-			}
-			perform(#selector(styleButtonsBackToOriginal), with: nil, afterDelay: (1*Double(index+1))+1)
+			let timerToColor = Timer(timeInterval: 1*Double(index+1), target: self, selector: #selector(styleButtonsToColor), userInfo: move, repeats: false)
+			RunLoop.current.add(timerToColor, forMode: .common)
+			timerToColor.tolerance = 0.1
+			
+			let timerToNormal = Timer(timeInterval: (1*Double(index+1))+0.5, target: self, selector: #selector(styleButtonsBackToOriginal), userInfo: nil, repeats: false)
+			RunLoop.current.add(timerToNormal, forMode: .common)
+			timerToNormal.tolerance = 0.1
 		}
 	}
 	
-	@objc private func styleButtonsBackToOriginal(){
-		//		DispatchQueue.main.asyncAfter(deadline: .now()) { [self] in
-		print("original")
-		self.gameButtonTop.backgroundColor = UIColor(red: 124/255, green: 244/255, blue: 90/255, alpha: 0.2)
-		self.gameButtonLeft.backgroundColor = UIColor(red: 242/255, green: 244/255, blue: 90/255, alpha: 0.2)
-		self.gameButtonRight.backgroundColor = UIColor(red: 90/255, green: 144/255, blue: 244/255, alpha: 0.2)
-		self.gameButtonBottom.backgroundColor = UIColor(red: 243/255, green: 108/255, blue: 70/255, alpha: 0.2)
-		//		}
+	@objc private func styleButtonsToColor(_ timer: Timer){
+		let move = timer.userInfo as? Move
+
+		DispatchQueue.main.asyncAfter(deadline: .now()) { [self] in
+			switch move {
+			case .top:
+				self.gameButtonTop.backgroundColor = UIColor(red: 124/255, green: 244/255, blue: 90/255, alpha: 1)
+			case .left:
+				self.gameButtonLeft.backgroundColor = UIColor(red: 242/255, green: 244/255, blue: 90/255, alpha: 1)
+			case .right:
+				self.gameButtonRight.backgroundColor = UIColor(red: 90/255, green: 144/255, blue: 244/255, alpha: 1)
+			case .bottom:
+				self.gameButtonBottom.backgroundColor = UIColor(red: 243/255, green: 108/255, blue: 70/255, alpha: 1)
+			default:
+				print("")
+			}
+		}
+		timer.invalidate()
+	}
+	
+	@objc private func styleButtonsBackToOriginal(_ timer: Timer){
+		timer.invalidate()
+
+		DispatchQueue.main.asyncAfter(deadline: .now()) { [self] in
+			self.gameButtonTop.backgroundColor = UIColor(red: 124/255, green: 244/255, blue: 90/255, alpha: 0.2)
+			self.gameButtonLeft.backgroundColor = UIColor(red: 242/255, green: 244/255, blue: 90/255, alpha: 0.2)
+			self.gameButtonRight.backgroundColor = UIColor(red: 90/255, green: 144/255, blue: 244/255, alpha: 0.2)
+			self.gameButtonBottom.backgroundColor = UIColor(red: 243/255, green: 108/255, blue: 70/255, alpha: 0.2)
+		}
 	}
 }
