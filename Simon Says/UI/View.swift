@@ -16,6 +16,8 @@ class View: UIViewController, GameEventsDelegate {
 	@IBOutlet weak var gameButtonLeft: UIButton!
 	@IBOutlet weak var gameButtonRight: UIButton!
 	@IBOutlet weak var gameButtonBottom: UIButton!
+	@IBOutlet weak var startGameButton: UIButton!
+	@IBOutlet weak var restartGameButton: UIButton!
 	
 	var viewModel = ViewModel()
 	
@@ -34,12 +36,20 @@ class View: UIViewController, GameEventsDelegate {
 		self.gameButtonBottom.layer.cornerRadius = 10
 		self.styleButtonsBackToOriginal(Timer())
 		
+		self.startGameButton.isHidden = false
+		self.restartGameButton.isHidden = true
+
 		// Set GameEventsDelegate to receive events from GameManager
 		self.viewModel.gameManager.gameEventsDelegate = self
-		self.viewModel.gameManager.restartGame()
 	}
 	
 	// User Interactions
+	@IBAction func startGamePressed(_ sender: Any) {
+		self.startGameButton.isHidden = true
+		self.restartGameButton.isHidden = false
+		self.viewModel.gameManager.restartGame()
+	}
+	
 	@IBAction func restartPressed(_ sender: Any) {
 		self.present(self.viewModel.restartButtonPressed(), animated: true, completion: nil)
 	}
