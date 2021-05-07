@@ -24,7 +24,7 @@ struct GameManager {
 	
 	mutating func handleLocalMove(_ move: Move){
 		localPlayer.sequence.addMoveToSequence(move)
-		
+
 		if (verifyIfMoveIsValid()) {
 			// Last move is valid
 			if (self.verifyIfSequenceIsFinished()){
