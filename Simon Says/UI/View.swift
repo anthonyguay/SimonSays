@@ -65,15 +65,14 @@ class View: UIViewController, GameEventsDelegate {
 		self.viewModel.gameButtonPressed(sender)
 	}
 	
-	
 	// MARK: GameEventsDelegate functions
-	func gameOver() {
-		self.present(self.viewModel.gameOver(), animated: true, completion: nil)
-	}
-	
 	func updateScores() {
 		self.highScoreLabel.text = self.viewModel.getHighScoreLabelText()
 		self.currentScoreLabel.text = self.viewModel.getCurrentScoreLabelText()
+	}
+	
+	func gameOver() {
+		self.present(self.viewModel.gameOver(), animated: true, completion: nil)
 	}
 	
 	func newOpponentSequence() {

@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -28,7 +27,6 @@
                                             <constraint firstAttribute="width" constant="137" id="d7e-ep-ek0"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="137" id="iqV-4a-fDm"/>
                                         </constraints>
-                                        <state key="normal" title="Top"/>
                                         <connections>
                                             <action selector="gameButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g6K-UW-akX"/>
                                         </connections>
@@ -40,7 +38,6 @@
                                             <constraint firstAttribute="height" constant="89" id="Pxm-Id-zFo"/>
                                             <constraint firstAttribute="width" constant="137" id="zjV-2k-wl7"/>
                                         </constraints>
-                                        <state key="normal" title="Left"/>
                                         <connections>
                                             <action selector="gameButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ddC-Mj-I5d"/>
                                         </connections>
@@ -54,7 +51,6 @@
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="89" id="Yd0-he-Bwf"/>
                                             <constraint firstAttribute="width" constant="137" id="Yqa-4D-3pA"/>
                                         </constraints>
-                                        <state key="normal" title="Right"/>
                                         <connections>
                                             <action selector="gameButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tkz-dd-82p"/>
                                         </connections>
@@ -66,13 +62,12 @@
                                             <constraint firstAttribute="width" constant="137" id="Jbj-Zf-8jw"/>
                                             <constraint firstAttribute="height" constant="89" id="RU0-U6-OWY"/>
                                         </constraints>
-                                        <state key="normal" title="Bottom"/>
                                         <connections>
                                             <action selector="gameButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Bq2-nL-kge"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.97683492332997945" green="0.97683492332997945" blue="0.97683492332997945" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="a4h-F8-hUh" secondAttribute="trailing" constant="112" id="2OS-Ny-3d9"/>
                                     <constraint firstItem="Iy9-Jc-W35" firstAttribute="top" secondItem="Ugh-I8-8vi" secondAttribute="bottom" constant="27" id="4r5-lp-fOm"/>
@@ -126,7 +121,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.9795874953" green="0.97972780469999998" blue="0.97955685849999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="xkw-ed-H2a" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4Xx-Ux-Ty1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="hYR-6S-6qZ" secondAttribute="bottom" constant="15" id="6Fd-aN-AIb"/>
@@ -156,9 +151,4 @@
             <point key="canvasLocation" x="137.68115942028987" y="97.767857142857139"/>
         </scene>
     </scenes>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>
