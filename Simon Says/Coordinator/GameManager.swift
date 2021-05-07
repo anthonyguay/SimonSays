@@ -11,7 +11,7 @@ import Foundation
 protocol GameEventsDelegate: NSObject {
 	func gameOver()
 	func updateScores()
-	func newOpponentMove(_ move: Move)
+	func newOpponentSequence()
 }
 
 struct GameManager {
@@ -22,31 +22,31 @@ struct GameManager {
 	
 	// MARK: Public Functions
 	
-	// MAIN FUNCTION called when the Player touches a button
 	mutating func handleLocalMove(_ move: Move){
-
 		localPlayer.sequence.addMoveToSequence(move)
-		print("Adding move to sequence")
 		
 		if (verifyIfMoveIsValid()) {
 			// Last move is valid
 			if (self.verifyIfSequenceIsFinished()){
-				// User has completed the entire sequence of moves. Display a status and keep the game going
-				print("Sequence completed")
+				// User has completed the entire sequence of moves. Keep the game going
 				self.localPlayer.increaseCurrentScore()
 				self.gameEventsDelegate?.updateScores()
 				self.generateNewOpponentMove()
 				self.localPlayer.sequence = Sequence()
 			} else {
-				print("In progress...")
 				// User has pressed all the right buttons so far, but is not finished typing the sequence
 			}
 		} else {
 			// Any wrong move terminates the game
-			print ("Not valid")
 			self.saveScore()
 			self.gameEventsDelegate?.gameOver()
 		}
+	}
+	
+	mutating func loadHighScore(){
+		localPlayer = Player(type: .local)
+		localPlayer.highScore = DiskManager().retrieveHighScoreFromDisk()
+		self.gameEventsDelegate?.updateScores()
 	}
 	
 	mutating func restartGame() {
@@ -59,8 +59,8 @@ struct GameManager {
 	}
 	
 	
-	// MARK: Private Functions - game mechanics
-
+	// MARK: Private Functions - Game Logic
+	
 	private mutating func verifyIfMoveIsValid() -> Bool {
 		return self.localPlayer.sequence.isLatestMoveValid(local: localPlayer.sequence, opponent: opponent.sequence)
 	}
@@ -84,20 +84,13 @@ struct GameManager {
 			move = .bottom
 		}
 		self.opponent.sequence.addMoveToSequence(move!)
-		self.gameEventsDelegate?.newOpponentMove(move!)
+		self.gameEventsDelegate?.newOpponentSequence()
 	}
 	
 	private func saveScore(){
 		if (localPlayer.currentScore > localPlayer.highScore){
 			DiskManager().persistHighScoreToDisk(score: localPlayer.currentScore)
 		}
-	}
-	
-	
-	
-	
-	
-	
-	
+	}	
 	
 }

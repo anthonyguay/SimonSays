@@ -74,6 +74,7 @@
 			children = (
 				9210A3EA263A16CF00AAC6B7 /* UI */,
 				9210A3E9263A16C500AAC6B7 /* Models */,
+				922B92B52644CBB400186596 /* Coordinator */,
 				9210A3EB263A16D400AAC6B7 /* Service */,
 				9210A3E6263A16A900AAC6B7 /* Project Files */,
 				9210A3E0263A166400AAC6B7 /* Info.plist */,
@@ -96,7 +97,6 @@
 		9210A3E9263A16C500AAC6B7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				9210A3EF263A2CFC00AAC6B7 /* GameManager.swift */,
 				9210A3F1263A2D1200AAC6B7 /* Player.swift */,
 				9210A3F3263A2D1E00AAC6B7 /* Sequence.swift */,
 				9210A3F5263A2D7800AAC6B7 /* Move.swift */,
@@ -121,6 +121,14 @@
 				9210A3FB263A327800AAC6B7 /* DiskManager.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		922B92B52644CBB400186596 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				9210A3EF263A2CFC00AAC6B7 /* GameManager.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

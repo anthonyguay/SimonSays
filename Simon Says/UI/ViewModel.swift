@@ -11,7 +11,7 @@ class ViewModel: UIViewController {
 
 	var gameManager = GameManager()
 	
-	// MARK: Handle new Move
+	// MARK: User interaction
 	func gameButtonPressed(_ button: UIButton) {
 		switch button.tag {
 		case K.UI.gameButtonTop:
@@ -23,17 +23,15 @@ class ViewModel: UIViewController {
 		case K.UI.gameButtonBottom:
 			self.gameManager.handleLocalMove(.bottom)
 		default:
-			print("")
+			print()
 		}
 	}
-	
+
 	// MARK: UI Functions
 	func getHighScoreLabelText() -> String {
-//		return "High Score: "
 		return "High Score: " + String(self.gameManager.localPlayer.highScore)
 	}
 	func getCurrentScoreLabelText() -> String {
-//		return "Current Score: "
 		return "Current Score: " + String(self.gameManager.localPlayer.currentScore)
 	}
 	

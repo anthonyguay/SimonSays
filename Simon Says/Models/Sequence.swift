@@ -12,15 +12,11 @@ import Foundation
 struct Sequence {
 	var moves : [Move] = []
 	
-	
 	// If the latest move matches the corresponding opponent move, we return true and keep the game going
 	func isLatestMoveValid(local: Sequence, opponent: Sequence) -> Bool {
-		let arraySize = local.moves.count
 		var counter = 0
 		
-		print ("Local moves: ", local.moves)
-		print ("Opponent moves: ", opponent.moves)
-		while counter < arraySize {
+		while counter < local.moves.count {
 			if (local.moves[counter] != opponent.moves[counter]) {
 				return false
 			}
